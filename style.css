@@ -1344,3 +1344,80 @@ details[open] .faq-question {
 .legal-main em {
   font-style: italic;
 }
+
+/* ============================================================
+   MOBILE FIXES (overrides — must come last)
+   ============================================================ */
+
+/* Defensive: nenhuma imagem ultrapassa o container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix grid blowout: por padrão, grid items têm min-width: auto
+   (= tamanho do conteúdo), o que faz imagens grandes inflarem o card
+   além da coluna. min-width: 0 força respeitar o grid. */
+.pricing-card,
+.ingredient-card,
+.bonus-card,
+.testimonial-card,
+.step-card,
+.hero-content,
+.hero-visual,
+.steps-grid > *,
+.ingredients-grid > *,
+.testimonials-grid > *,
+.bonuses-grid > *,
+.pricing-grid > * {
+  min-width: 0;
+}
+
+/* Pricing-best sem scale no mobile pra evitar overflow visual */
+@media (max-width: 639px) {
+  .pricing-best,
+  .pricing-best:hover {
+    transform: none !important;
+  }
+  .pricing-best:hover {
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* Header mais compacto no mobile pequeno — esconde badges
+   (já tem trust-bar dedicada logo abaixo do hero) */
+@media (max-width: 540px) {
+  .header-badges {
+    display: none;
+  }
+  .header-inner {
+    padding-block: 0.6rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+/* Hero padding mais respirado em telas muito pequenas */
+@media (max-width: 480px) {
+  .hero {
+    padding-block: 2rem 2.5rem;
+  }
+  .hero-headline {
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+    line-height: 1.15;
+  }
+}
+
+/* Pricing cards: padding lateral menor em telas pequenas pra dar
+   mais espaço pro conteúdo (botão CTA principalmente) */
+@media (max-width: 400px) {
+  .pricing-card {
+    padding: 1.5rem 1.1rem;
+  }
+  .pricing-card .btn-primary,
+  .pricing-card .btn-secondary {
+    font-size: 0.95rem;
+    padding-inline: 0.5rem;
+  }
+}
