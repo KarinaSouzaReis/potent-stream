@@ -12,6 +12,18 @@
 const AFFILIATE_LINK = "https://thepotentstream.com/start/index.php?aff_id=77782";
 
 // ---------------------------------------------------------------------------
+// Google Ads conversion labels
+// ---------------------------------------------------------------------------
+const GADS_CTA_CLICK = "AW-948909355/6W-kCPCGrbAcEKvqvMQD"; // fires on Buy Now click (proxy)
+// const GADS_PURCHASE = "AW-948909355/ppSDCLPcxLAcEKvqvMQD"; // reserved for BuyGoods postback
+
+function fireCTAConversion() {
+  if (typeof gtag === "function") {
+    gtag("event", "conversion", { send_to: GADS_CTA_CLICK });
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Variáveis opcionais por pacote (caso queira links distintos por quantidade)
 // Descomente e ajuste se o checkout suportar parâmetro de quantidade/SKU.
 // ---------------------------------------------------------------------------
@@ -41,17 +53,7 @@ function attachCTALinks() {
   ctaButtons.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-
-      // Optional: fire a tracking event before redirect
-      // Example for GA4:
-      // if (typeof gtag === "function") {
-      //   gtag("event", "cta_click", {
-      //     event_category: "conversion",
-      //     event_label: btn.getAttribute("aria-label") || "CTA Button",
-      //   });
-      // }
-
-      // Open checkout in new tab
+      fireCTAConversion();
       window.open(AFFILIATE_LINK, "_blank", "noopener,noreferrer");
     });
   });
@@ -79,12 +81,12 @@ function initSmoothScrollCTAs() {
       if (pricingSection && window.innerWidth < 768) {
         // Mobile: scroll to pricing first so user sees packages
         pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        // Then open link after a short delay
         setTimeout(function () {
+          fireCTAConversion();
           window.open(AFFILIATE_LINK, "_blank", "noopener,noreferrer");
         }, 600);
       } else {
-        // Desktop: go straight to checkout
+        fireCTAConversion();
         window.open(AFFILIATE_LINK, "_blank", "noopener,noreferrer");
       }
     });
@@ -102,6 +104,7 @@ function initSmoothScrollCTAs() {
       if (orderSection) {
         orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
+        fireCTAConversion();
         window.open(AFFILIATE_LINK, "_blank", "noopener,noreferrer");
       }
     });
