@@ -1237,3 +1237,110 @@ details[open] .faq-question {
     display: none;
   }
 }
+
+/* ===================== LEGAL PAGES (privacy.html / terms.html) ===================== */
+.legal-page .site-header {
+  background: var(--color-white);
+  border-bottom: 1px solid #E8E4DC;
+  position: relative;
+}
+
+.legal-page .header-back {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.legal-page .header-back:hover,
+.legal-page .header-back:focus-visible {
+  background: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+.legal-main {
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+  background: var(--color-bg);
+  min-height: 60vh;
+}
+
+.legal-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4.5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--color-text-heading);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.legal-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #E8E4DC;
+}
+
+.legal-intro {
+  font-size: 1.02rem;
+  color: var(--color-text-body);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.legal-main section {
+  margin-bottom: 1.75rem;
+}
+
+.legal-main h2 {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0 0 0.65rem 0;
+  line-height: 1.35;
+}
+
+.legal-main p {
+  font-size: 0.97rem;
+  color: var(--color-text-body);
+  line-height: 1.72;
+  margin-bottom: 0.85rem;
+}
+
+.legal-main ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0.95rem;
+}
+
+.legal-main ul li {
+  font-size: 0.97rem;
+  color: var(--color-text-body);
+  line-height: 1.7;
+  margin-bottom: 0.45rem;
+}
+
+.legal-main a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-main a:hover,
+.legal-main a:focus-visible {
+  color: var(--color-primary-dark);
+}
+
+.legal-main strong {
+  color: var(--color-text-heading);
+  font-weight: 700;
+}
+
+.legal-main em {
+  font-style: italic;
+}
